@@ -9,15 +9,15 @@ import com.cp.writer.IWriter;
 public class MySpringBeanWithDependency {
 	
 	@Autowired
-	private IWriter writer;
+	private IWriter niceWriter;
 
     public void setWriter(IWriter writer) {
-        this.writer = writer;
+        this.niceWriter = writer;
     }
 
     public void run() {
         String s = "Write something ....";
-        writer.writer(s);
+        niceWriter.writer(s);
     }
 
 }
