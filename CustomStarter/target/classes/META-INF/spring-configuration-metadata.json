@@ -1,0 +1,41 @@
+{
+  "groups": [
+    {
+      "name": "my-org.cli.security",
+      "type": "org.my.developer.security.CommandLineSecurityConfigurer",
+      "sourceType": "org.my.developer.security.CommandLineSecurityConfigurer"
+    },
+    {
+      "name": "my-org.web.security",
+      "type": "org.my.developer.security.WebSecurityConfigurer",
+      "sourceType": "org.my.developer.security.WebSecurityConfigurer"
+    }
+  ],
+  "properties": [
+    {
+      "name": "my-org.cli.security.required-role",
+      "type": "java.lang.String",
+      "description": "The role a user must have to run the application.",
+      "sourceType": "org.my.developer.security.CommandLineSecurityConfigurer"
+    },
+    {
+      "name": "my-org.web.security.admin-endpoints",
+      "type": "java.lang.String[]",
+      "description": "Endpoints that require the ADMIN role to access",
+      "sourceType": "org.my.developer.security.WebSecurityConfigurer"
+    },
+    {
+      "name": "my-org.web.security.unsecured-endpoints",
+      "type": "java.lang.String[]",
+      "description": "Endpoints that have no security requirements. Default value: \/public**",
+      "sourceType": "org.my.developer.security.WebSecurityConfigurer"
+    },
+    {
+      "name": "my-org.web.security.user-endpoints",
+      "type": "java.lang.String[]",
+      "description": "Endpoints that require the USER role to access",
+      "sourceType": "org.my.developer.security.WebSecurityConfigurer"
+    }
+  ],
+  "hints": []
+}

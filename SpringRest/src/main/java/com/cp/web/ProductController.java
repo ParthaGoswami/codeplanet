@@ -49,10 +49,24 @@ public class ProductController {
     		return ResponseEntity.status(400).build();
     	}
     	    	
-        return ResponseEntity.ok(productList.stream()
-        		.filter(p -> p.getId() == id)
-        		.findFirst()
-        		.get());
+    	Product tempProduct = null;
+    	
+    	for(Product product : productList) {
+    		
+    		if(product.getId() == id) {
+    			tempProduct = product;
+    		}
+    		
+    	}
+    	
+    	return ResponseEntity.ok(tempProduct);
+    	
+    	
+//    	
+//        return ResponseEntity.ok(productList.stream()
+//        		.filter(p -> p.getId() == id)
+//        		.findFirst()
+//        		.get());
     }
   
     @DeleteMapping("/product/{id}")
