@@ -1,5 +1,7 @@
 package com.cp.web;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +20,9 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/employee")
-	public ResponseEntity<Employee> getEmployee() {		
-		Employee employee = employeeService.getEmployeeDetails();				
-		return ResponseEntity.ok(employee);
+	public ResponseEntity<List<Employee>> getEmployee() {		
+//		Employee employee = employeeService.getEmployeeDetails();				
+		return ResponseEntity.ok(employeeService.getEmployeeDetails());
 	}
 
 }

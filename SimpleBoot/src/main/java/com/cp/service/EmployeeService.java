@@ -1,30 +1,27 @@
 package com.cp.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.cp.dao.EmployeeRepository;
+import com.cp.dao.IEmployeeRepository;
 import com.cp.model.Employee;
 
 @Service
 public class EmployeeService {
 	
 	
-	private EmployeeRepository employeeRepository;
+	private IEmployeeRepository jdbcEmployeeRepository;
 	
 	
-	public EmployeeService(EmployeeRepository employeeRepository) {		
-		this.employeeRepository = employeeRepository;
+	public EmployeeService(IEmployeeRepository jdbcEmployeeRepository) {		
+		this.jdbcEmployeeRepository = jdbcEmployeeRepository;
 	}
 	
-	public Employee getEmployeeDetails() {
+	public List<Employee> getEmployeeDetails() {
 		
-		employeeRepository.getEmployeeDataFromDb();
-		
-		Employee employee =  new Employee();
-		employee.setName("CodePlanet");
-		employee.setAge(20);
-		
-		return employee;
+		return jdbcEmployeeRepository.getAllEmployees();
 	}
 
 }
