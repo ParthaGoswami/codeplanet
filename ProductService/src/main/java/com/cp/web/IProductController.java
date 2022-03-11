@@ -9,5 +9,7 @@ import com.cp.model.Product;
 public interface IProductController {
 	
 	public ResponseEntity<List<Product>> getProducts();
+	
+	public ResponseEntity<Void> saveProduct(Product product);
 
 }

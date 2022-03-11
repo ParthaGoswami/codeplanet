@@ -9,16 +9,18 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+	mavenCentral()	
 }
 
-dependencies {
+dependencies {	
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.5.13'	
 	implementation 'com.h2database:h2'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()

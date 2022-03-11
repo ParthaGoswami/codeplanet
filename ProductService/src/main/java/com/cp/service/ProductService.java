@@ -24,5 +24,44 @@ public class ProductService implements IProductService {
 		// process logic e.g calculate total product price = product price * GST%;
 		return products;
 	}
+	
+	@Override
+	public Product getProductById(Long productId) {
+		// TODO Auto-generated method stub
+		return productRepository.getProductById(productId);
+	}
+
+	
+	@Override
+	public boolean saveProduct(Product product){
+		boolean status = false;
+		Integer result= productRepository.addProduct(product);
+		if(result != null && result > 0) {
+			status = true;			
+		}		
+		return status;
+	}
+
+	@Override
+	public Product updateProduct(Product product) {
+		Product productResponse = null;
+		int result = productRepository.updateProduct(product);
+		if(result > 0) {
+			productResponse = productRepository.getProductById(product.getProductId());
+		}
+		return productResponse;
+	}
+
+	@Override
+	public boolean deleteProduct(Long productId) {
+		boolean status = false;
+		Integer result = productRepository.deleteProduct(productId);
+		if(result > 0 ) {
+			status = true;
+		}
+		return status;
+	}
+
+	
 
 }
