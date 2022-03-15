@@ -1,6 +1,7 @@
 package com.cp.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ public class ProductRepository implements IProductRepository {
 	private static String SELECT_PRODUCTS = "select * from product";
 	private static String SELECT_PRODUCTS_BY_ID = "select * from product where id=?";
 	private static String INSERT_PRODUCTS = "insert into product values (? , ? , ? , ?)";
-	private static String UPDATE_PRODUCTS = "update product set name = ? , desc = ? , price  = ? where id = ?";
+	private static String UPDATE_PRODUCTS = "update product set name = ? , description = ? , price  = ? where id = ?";
 	private static String DELETE_PRODUCT = "delete from product where id = ?";
 	
 	private JdbcTemplate jdbcTemplate;
@@ -31,14 +32,14 @@ public class ProductRepository implements IProductRepository {
 						Product product = new Product();
 						product.setProductId(rs.getLong("id"));
 						product.setProductName(rs.getString("name"));
-						product.setProductDesc(rs.getString("desc"));
+						product.setProductDesc(rs.getString("description"));
 						product.setPrice(rs.getDouble("price"));
 					 return product;
 				});
 	}
 	
 	@Override
-	public Product getProductById(Long productId) {
+	public Optional<Product> getProductById(Long productId) {
 		// TODO Auto-generated method stub
 		
 		String query =  "select * from product where id=" +productId;
@@ -47,10 +48,10 @@ public class ProductRepository implements IProductRepository {
 						Product product = new Product();
 						product.setProductId(rs.getLong("id"));
 						product.setProductName(rs.getString("name"));
-						product.setProductDesc(rs.getString("desc"));
+						product.setProductDesc(rs.getString("description"));
 						product.setPrice(rs.getDouble("price"));
 					 return product;
-				}).stream().findFirst().get();
+				}).stream().findFirst();
 	}
 
 	@Override

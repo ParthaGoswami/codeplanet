@@ -1,7 +1,7 @@
 CREATE TABLE product ( 
    id  INT NOT NULL ,
    name VARCHAR(50) NOT NULL, 
-   desc VARCHAR(50) NOT NULL,
+   description VARCHAR(50) NOT NULL,
    price NUMERIC  
 );
 insert into product values ( 1001 , 'Samsung Washing Machine' , 'White Washing Machine' , 10000.50);

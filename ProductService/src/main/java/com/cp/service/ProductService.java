@@ -1,10 +1,12 @@
 package com.cp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.cp.dao.IProductRepository;
+import com.cp.exception.ProductNotFoundException;
 import com.cp.model.Product;
 
 @Service
@@ -28,7 +30,12 @@ public class ProductService implements IProductService {
 	@Override
 	public Product getProductById(Long productId) {
 		// TODO Auto-generated method stub
-		return productRepository.getProductById(productId);
+		Optional<Product> productOptional = productRepository.getProductById(productId);
+		
+		if(productOptional.isEmpty()) {
+			throw new ProductNotFoundException("Product With Id : " + productId +" , Not found");
+		}
+		return productOptional.get();
 	}
 
 	
@@ -47,7 +54,7 @@ public class ProductService implements IProductService {
 		Product productResponse = null;
 		int result = productRepository.updateProduct(product);
 		if(result > 0) {
-			productResponse = productRepository.getProductById(product.getProductId());
+			productResponse = productRepository.getProductById(product.getProductId()).get();
 		}
 		return productResponse;
 	}

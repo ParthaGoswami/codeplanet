@@ -3,9 +3,11 @@ package com.cp.web;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cp.SimpleRunException;
 import com.cp.model.Employee;
 import com.cp.service.EmployeeService;
 
@@ -38,5 +40,13 @@ public class EmployeeController {
 //		Employee employee = employeeService.getEmployeeDetails();				
 		return ResponseEntity.ok(employeeService.getEmployeeDetails());
 	}
+	
+	
+	
+//	@ExceptionHandler({ SimpleRunException.class })
+//    public ResponseEntity<Void> handleException(SimpleRunException ex) {
+//        System.out.println("Error Handled .." + ex);
+//        return ResponseEntity.badRequest().build();
+//    }
 
 }

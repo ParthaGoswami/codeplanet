@@ -2,9 +2,12 @@ package com.cp.web;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,11 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cp.exception.ProductNotFoundException;
 import com.cp.model.Product;
 import com.cp.service.IProductService;
 
 @RestController
 public class ProductController implements IProductController {
+	
+	private Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	private IProductService productService;
 	
@@ -29,8 +35,10 @@ public class ProductController implements IProductController {
 	 * Get All products available in DB. Thus returns a list of products
 	 */
 	@GetMapping("/product")
-	public ResponseEntity<List<Product>> getProducts() {
-		return ResponseEntity.ok(productService.getAllProducts());
+	public ResponseEntity<List<Product>> getProducts() {		
+		
+		return ResponseEntity.ok(productService.getAllProducts());		
+		
 	}
 	
 	/**
@@ -51,7 +59,7 @@ public class ProductController implements IProductController {
 	 */
 	@PostMapping("/product")
 	public ResponseEntity<Void> saveProduct(@RequestBody Product product){
-		
+
 			ResponseEntity response;
 			boolean status = productService.saveProduct(product);
 			
@@ -85,5 +93,15 @@ public class ProductController implements IProductController {
 		productService.deleteProduct(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
+	
+	
+//	@ExceptionHandler({ProductNotFoundException.class})
+//	public ResponseEntity<Void> handleException(ProductNotFoundException ex) {
+//		ex.printStackTrace();
+//		return ResponseEntity.notFound().build();
+//	}
+
+	
+	
 
 }
