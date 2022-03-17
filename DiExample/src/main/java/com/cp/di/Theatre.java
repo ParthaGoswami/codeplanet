@@ -21,11 +21,11 @@ public class Theatre {  //id = theatre
 //	@Autowired
 	private Show eveningShow;
 	
-//	
-////	public Theatre(Show morningShow , Show eveningShow) {
-////		this.morningShow =  morningShow;
-////		this.eveningShow = eveningShow;
-////	}
+	
+	public Theatre(Show morningShow , Show eveningShow) {
+		this.morningShow =  morningShow;
+		this.eveningShow = eveningShow;
+	}
 	
 	
 	public void play() {

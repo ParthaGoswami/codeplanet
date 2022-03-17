@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "04c29629-fc85-4374-adcc-bd9e967625df",
+		"name": "StationEntryAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addStationEntry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"trainId\" : \"1001\",\r\n    \"type\" : \"OUT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/entry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"entry"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
