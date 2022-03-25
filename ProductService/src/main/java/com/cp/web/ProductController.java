@@ -36,7 +36,6 @@ public class ProductController implements IProductController {
 	 */
 	@GetMapping("/product")
 	public ResponseEntity<List<Product>> getProducts() {		
-		
 		return ResponseEntity.ok(productService.getAllProducts());		
 		
 	}
